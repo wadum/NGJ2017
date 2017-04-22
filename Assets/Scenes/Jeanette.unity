@@ -247,14 +247,15 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114188403548457838, guid: 62a1e8bf75b764e409b5938ad16284f8,
+    - target: {fileID: 114405286549369498, guid: 62a1e8bf75b764e409b5938ad16284f8,
         type: 2}
-      propertyPath: startButton
-      value: 
-      objectReference: {fileID: 1687533867}
-    - target: {fileID: 1373139636506414, guid: 62a1e8bf75b764e409b5938ad16284f8, type: 2}
-      propertyPath: m_TagString
-      value: GameController
+      propertyPath: viewIdField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114405286549369498, guid: 62a1e8bf75b764e409b5938ad16284f8,
+        type: 2}
+      propertyPath: instantiationId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62a1e8bf75b764e409b5938ad16284f8, type: 2}
@@ -321,37 +322,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1081998239 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1373139636506414, guid: 62a1e8bf75b764e409b5938ad16284f8,
-    type: 2}
-  m_PrefabInternal: {fileID: 245577904}
---- !u!114 &1081998240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1081998239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 0
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 0}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
 --- !u!1001 &1315022618
 Prefab:
   m_ObjectHideFlags: 0
@@ -501,20 +471,9 @@ Prefab:
       propertyPath: instantiationId
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114635453467822402, guid: ec2b7d0f7da0e1f4f8509ddda20d48f2,
-        type: 2}
-      propertyPath: m_FontData.m_AlignByGeometry
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec2b7d0f7da0e1f4f8509ddda20d48f2, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1687533867 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114790803644009568, guid: ec2b7d0f7da0e1f4f8509ddda20d48f2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1687533866}
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1913451895
 Prefab:
   m_ObjectHideFlags: 0
