@@ -11,8 +11,6 @@ using System.Linq;
 /// </summary>
 public class GameState : Photon.MonoBehaviour
 {
-    public Button startButton;
-
     //private PlayerAmount;
 
     /// <summary>Connect automatically? If false you can set this to true later on or call ConnectUsingSettings in your own scripts.</summary>
@@ -26,7 +24,6 @@ public class GameState : Photon.MonoBehaviour
 
     public virtual void Start()
     {
-        startButton.interactable = false;
         PhotonNetwork.autoJoinLobby = false;    // we join randomly. always. no need to join a lobby to get the list of rooms.
     }
 
@@ -40,6 +37,11 @@ public class GameState : Photon.MonoBehaviour
             PhotonNetwork.ConnectUsingSettings(Version + "." + SceneManagerHelper.ActiveSceneBuildIndex);
         }
     }
+
+	[PunRPC]
+	public void StartGame() {
+		GameObject.FindGameObjectWithTag("LobbyGuiew").SetActive(false);
+	}
 
 
     // below, we implement some callbacks of PUN
@@ -83,14 +85,6 @@ public class GameState : Photon.MonoBehaviour
 			c.GetComponentInParent<Camera>().targetDisplay = 0;
 			c.gameObject.SetActive(c.Id == PhotonNetwork.player.ID);
 		});
-
-        //Fix overlay
-        if(PhotonNetwork.player.ID != 1)
-        {
-            startButton.gameObject.SetActive(false);
-        }
-
-        //If more than one player is in the room make start interacteble
 
 	}
 
