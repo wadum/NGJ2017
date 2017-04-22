@@ -81,9 +81,9 @@ public class GameState : Photon.MonoBehaviour
 		List<CameraId> cameras = FindObjectsOfType<CameraId>().ToList();
 
 		cameras.ForEach(c =>  {
-			Debug.LogFormat("Camera id: {0} client Id: {1}", c.Id, PhotonNetwork.player.ID); 
+			Debug.LogFormat("Camera id: {0} client Id: {1}", c.Id, (int)PhotonNetwork.playerList.Length); 
 			c.GetComponentInParent<Camera>().targetDisplay = 0;
-			c.gameObject.SetActive(c.Id == PhotonNetwork.player.ID);
+			c.gameObject.SetActive(c.Id == (int)PhotonNetwork.playerList.Length);
 		});
 
 	}

@@ -50,4 +50,10 @@ MonoBehaviour:
   - ChangeNumberMaster
   - StartGame
   - FireClients
+  - MoveDown
+  - MoveLeft
+  - MoveRight
+  - MoveUp
+  - SetX
+  - SetY
   DisableAutoOpenWizard: 1
