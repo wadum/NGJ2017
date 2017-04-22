@@ -12,15 +12,20 @@ public class ToggleButtonColor : Photon.MonoBehaviour {
 	}
 
 	public void ToggleColor() {
-		photonView.RPC("ToggleColorRPC", PhotonTargets.All);
+		Debug.Log(PhotonNetwork.player.ID);
+		photonView.RPC("ToggleColorMaster", PhotonTargets.MasterClient);
 	}
 
 	[PunRPC]
-	public void ToggleColorRPC() {
+	public void ToggleColorMaster() {
 		ColorBlock colors = button.colors;
+		photonView.RPC("ToggleColorClients", PhotonTargets.All, (colors.normalColor.r + 1)%2, (colors.normalColor.g + 1)%2, colors.normalColor.b);
+	}
 
-		colors.highlightedColor = colors.normalColor = new Color((colors.normalColor.r + 1)%2, (colors.normalColor.g + 1)%2, colors.normalColor.b);
-
+	[PunRPC]
+	public void ToggleColorClients(float r, float g, float b) {
+		ColorBlock colors = button.colors;
+		colors.highlightedColor = colors.normalColor = new Color(r,g,b);
 		button.colors = colors;
 	}
 }

@@ -44,4 +44,6 @@ MonoBehaviour:
   - TaggedPlayer
   - ToggleColor
   - ToggleColorRPC
+  - ToggleColorClients
+  - ToggleColorMaster
   DisableAutoOpenWizard: 1
