@@ -48,4 +48,5 @@ MonoBehaviour:
   - ToggleColorMaster
   - ChangeNumberClients
   - ChangeNumberMaster
+  - StartGame
   DisableAutoOpenWizard: 1
