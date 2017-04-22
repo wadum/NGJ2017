@@ -49,4 +49,5 @@ MonoBehaviour:
   - ChangeNumberClients
   - ChangeNumberMaster
   - StartGame
+  - FireClients
   DisableAutoOpenWizard: 1
