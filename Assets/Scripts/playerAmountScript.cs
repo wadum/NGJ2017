@@ -36,7 +36,7 @@ public class playerAmountScript : Photon.MonoBehaviour
     public void ChangeNumberClients(string PlayerAmount)
     {
         textField.text = PlayerAmount;
-		if (PhotonNetwork.player.ID == 1 && PhotonNetwork.playerList.Length > 1)
+		if (PhotonNetwork.player.ID == 1 && PhotonNetwork.playerList.Length > 2)
 		{
 			StartButton.interactable = true;
 		}
