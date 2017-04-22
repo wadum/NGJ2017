@@ -30,15 +30,14 @@ public class playerAmountScript : Photon.MonoBehaviour
     public void ChangeNumberClients(string PlayerAmount)
     {
         textField.text = PlayerAmount;
+		if (PhotonNetwork.player.ID == 1 && PhotonNetwork.playerList.Length > 1)
+		{
+			StartButton.interactable = true;
+		}
     }
 
     public void OnJoinedRoom()
     {
         ChangeNumber();
-
-        if (PhotonNetwork.playerList.Length > 1)
-        {
-            StartButton.interactable = true;
-        }
     }
 }
