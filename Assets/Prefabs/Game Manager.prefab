@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f3bebbc804547b29d7af54ab7b417a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButton: {fileID: 0}
   AutoConnect: 1
   Version: 1
 --- !u!114 &114727822372265680

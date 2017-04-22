@@ -46,4 +46,6 @@ MonoBehaviour:
   - ToggleColorRPC
   - ToggleColorClients
   - ToggleColorMaster
+  - ChangeNumberClients
+  - ChangeNumberMaster
   DisableAutoOpenWizard: 1
