@@ -83,7 +83,7 @@ public class GameState : Photon.MonoBehaviour
 		cameras.ForEach(c =>  {
 			Debug.LogFormat("Camera id: {0} client Id: {1}", c.Id, (int)PhotonNetwork.playerList.Length); 
 			c.GetComponentInParent<Camera>().targetDisplay = 0;
-			c.gameObject.SetActive(c.Id == (int)PhotonNetwork.playerList.Length);
+			c.transform.parent.gameObject.SetActive(c.Id == (int)PhotonNetwork.playerList.Length);
 		});
 
 	}
