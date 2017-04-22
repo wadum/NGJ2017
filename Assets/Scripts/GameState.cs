@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// This script automatically connects to Photon (using the settings file),
@@ -66,5 +68,12 @@ public class GameState : Photon.MonoBehaviour
     public void OnJoinedRoom()
     {
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room. From here on, your game would be running. For reference, all callbacks are listed in enum: PhotonNetworkingMessage");
-    }
+		List<CameraId> cameras = FindObjectsOfType<CameraId>().ToList();
+
+		cameras.ForEach(c =>  {
+			Debug.LogFormat("Camera id: {0} client Id: {1}", c.Id, PhotonNetwork.player.ID); 
+			c.GetComponentInParent<Camera>().targetDisplay = 0;
+			c.gameObject.SetActive(c.Id == PhotonNetwork.player.ID);
+		});
+	}
 }
