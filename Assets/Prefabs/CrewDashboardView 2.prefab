@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114978205696935696}
   - component: {fileID: 114230264473571808}
   m_Layer: 5
-  m_Name: Move Left
+  m_Name: Move Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 114007256218755840}
   - component: {fileID: 114084122445329732}
   m_Layer: 5
-  m_Name: Move Right
+  m_Name: Move Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

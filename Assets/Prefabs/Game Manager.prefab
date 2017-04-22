@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114727822372265680}
   - component: {fileID: 114188403548457838}
   - component: {fileID: 114405286549369498}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
   m_Icon: {fileID: 0}
@@ -95,6 +95,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 197}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

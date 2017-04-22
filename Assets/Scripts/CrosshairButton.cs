@@ -15,4 +15,12 @@ public class CrosshairButton : MonoBehaviour {
 	public void MoveLeft(){
 		crosshairObject.photonView.RPC("MoveLeft", PhotonTargets.MasterClient, stepAmount);
 	}
+
+	public void MoveUp(){
+		crosshairObject.photonView.RPC("MoveUp", PhotonTargets.MasterClient, stepAmount);
+	}
+
+	public void MoveDown(){
+		crosshairObject.photonView.RPC("MoveDown", PhotonTargets.MasterClient, stepAmount);
+	}
 }
