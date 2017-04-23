@@ -42,18 +42,18 @@ public class EnemyBehavior : MonoBehaviour {
 		StopAllCoroutines();
 	}
 
-	private static Vector3 lowerBound = new Vector3(-525+40,-350+40);
-	private static Vector3 upperBound = new Vector3(525+40,350+40);
+	private static Vector3 lowerBound = new Vector3(-525+40,-350+40,0);
+	private static Vector3 upperBound = new Vector3(525-40,350-40,0);
 	public IEnumerator FadeInOut() {
 		while(true){
 			
 			float alpha = image.color.a - FadeSpeed * Time.deltaTime;
 			float life = (Time.time - startTime)/SecondsAlive;
 
-			if (alpha < -HiddenTime) {
+
 				Vector3 tmpPos = Vector3.Slerp(startPos, endPos, life);
 				rect.localPosition = Vector3.Max(lowerBound, Vector3.Min(upperBound, tmpPos));
-			}
+
 			Color newColor = Color.Lerp(startColor, endColor, life);
 			image.color = new Color(newColor.r, newColor.g, newColor.b, alpha < -HiddenTime ? 1 : alpha);
 			yield return null;
