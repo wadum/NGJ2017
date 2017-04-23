@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &114638651192301404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd316c3df8b843b696968cb2c5c5424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FadeSpeed: 0.5
+  HiddenTime: 0
+  SecondsAlive: 20
 --- !u!222 &222881092918796040
 CanvasRenderer:
   m_ObjectHideFlags: 1
