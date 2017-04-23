@@ -40,6 +40,8 @@ public class GameState : Photon.MonoBehaviour
 
 	[PunRPC]
 	public void StartGame() {
+		if(PhotonNetwork.isMasterClient)
+			FindObjectOfType<FireCanon>().StartAutoSpawn();
 		GameObject.FindGameObjectWithTag("LobbyGuiew").SetActive(false);
 	}
 
