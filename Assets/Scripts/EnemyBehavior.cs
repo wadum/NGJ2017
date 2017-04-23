@@ -21,6 +21,9 @@ public class EnemyBehavior : MonoBehaviour {
 	private Vector3 endPos;
 	private float startTime;
 
+	public Color startColor = Color.green;
+	public Color endColor = Color.red;
+
 	void Awake() {
 		this.image = GetComponent<Image>();
 		this.rect = GetComponent<RectTransform>();
@@ -39,14 +42,20 @@ public class EnemyBehavior : MonoBehaviour {
 		StopAllCoroutines();
 	}
 
+	private const Vector3 lowerBound = new Vector3(-525+40,-350+40);
+	private const Vector3 upperBound = new Vector3(525+40,350+40);
 	public IEnumerator FadeInOut() {
 		while(true){
 			
 			float alpha = image.color.a - FadeSpeed * Time.deltaTime;
+			float life = (Time.time - startTime)/SecondsAlive;
+
 			if (alpha < -HiddenTime) {
-				rect.localPosition = Vector3.Slerp(startPos, endPos, (Time.time - startTime)/SecondsAlive);
+				Vector3 tmpPos = Vector3.Slerp(startPos, endPos, life);
+				rect.localPosition = Vector3.Max(lowerBound, Vector3.Min(upperBound, tmpPos));
 			}
-			image.color = new Color(image.color.r, image.color.g, image.color.b, alpha < -HiddenTime ? 1 : alpha);
+			Color newColor = Color.Lerp(startColor, endColor, life);
+			image.color = new Color(newColor.r, newColor.g, newColor.b, alpha < -HiddenTime ? 1 : alpha);
 			yield return null;
 		}
 	}
