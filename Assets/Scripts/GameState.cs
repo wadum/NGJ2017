@@ -1,7 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,8 +6,10 @@ using System.Linq;
 /// This script automatically connects to Photon (using the settings file),
 /// tries to join a random room and creates one if none was found (which is ok).
 /// </summary>
-public class GameState : Photon.MonoBehaviour
-{
+public class GameState : Photon.MonoBehaviour {
+
+    public string SuperUniqueServerKey = "Christoffer-Wants-This";
+
     //private PlayerAmount;
 
     /// <summary>Connect automatically? If false you can set this to true later on or call ConnectUsingSettings in your own scripts.</summary>
@@ -56,13 +55,17 @@ public class GameState : Photon.MonoBehaviour
     public virtual void OnConnectedToMaster()
     {
         Debug.Log("OnConnectedToMaster() was called by PUN. Now this client is connected and could join a room. Calling: PhotonNetwork.JoinRandomRoom();");
-        PhotonNetwork.JoinRandomRoom();
+        PhotonNetwork.JoinRoom(SuperUniqueServerKey);
     }
 
     public virtual void OnJoinedLobby()
     {
         Debug.Log("OnJoinedLobby(). This client is connected and does get a room-list, which gets stored as PhotonNetwork.GetRoomList(). This script now calls: PhotonNetwork.JoinRandomRoom();");
-        PhotonNetwork.JoinRandomRoom();
+        PhotonNetwork.JoinRoom(SuperUniqueServerKey);
+    }
+
+    public virtual void OnPhotonJoinRoomFailed() {
+        PhotonNetwork.CreateRoom(SuperUniqueServerKey);
     }
 
     public virtual void OnPhotonRandomJoinFailed()
@@ -80,7 +83,6 @@ public class GameState : Photon.MonoBehaviour
 
     public void OnJoinedRoom()
     {
-
         //Fix camera positions
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room. From here on, your game would be running. For reference, all callbacks are listed in enum: PhotonNetworkingMessage");
 		List<CameraId> cameras = FindObjectsOfType<CameraId>().ToList();
@@ -90,7 +92,5 @@ public class GameState : Photon.MonoBehaviour
 			c.GetComponentInParent<Camera>().targetDisplay = 0;
 			c.transform.parent.gameObject.SetActive(c.Id == (int)PhotonNetwork.playerList.Length);
 		});
-
 	}
-
 }
