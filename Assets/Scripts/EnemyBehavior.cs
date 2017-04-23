@@ -50,9 +50,13 @@ public class EnemyBehavior : MonoBehaviour {
 			float alpha = image.color.a - FadeSpeed * Time.deltaTime;
 			float life = (Time.time - startTime)/SecondsAlive;
 
+			if (life > 1) {
+				FindObjectOfType<FireCanon>().hp--;
+				Destroy(this);
+			}
 
-				Vector3 tmpPos = Vector3.Slerp(startPos, endPos, life);
-				rect.localPosition = Vector3.Max(lowerBound, Vector3.Min(upperBound, tmpPos));
+			Vector3 tmpPos = Vector3.Slerp(startPos, endPos, life);
+			rect.localPosition = Vector3.Max(lowerBound, Vector3.Min(upperBound, tmpPos));
 
 			Color newColor = Color.Lerp(startColor, endColor, life);
 			image.color = new Color(newColor.r, newColor.g, newColor.b, alpha < -HiddenTime ? 1 : alpha);
