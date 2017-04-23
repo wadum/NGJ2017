@@ -9,6 +9,11 @@ public class playerAmountScript : Photon.MonoBehaviour
     public Button StartButton;
     Text textField;
 
+	public GameObject[] playerImages;
+
+	public Sprite GreenColor;
+	public Sprite RedColor;
+
     public void Start()
     {
         textField = GetComponent<Text>();
@@ -28,18 +33,18 @@ public class playerAmountScript : Photon.MonoBehaviour
     [PunRPC]
     public void ChangeNumberMaster()
     {
-        string PlayerAmount = PhotonNetwork.playerList.Length + "";
-        photonView.RPC("ChangeNumberClients", PhotonTargets.All, PlayerAmount);
+		photonView.RPC("ChangeNumberClients", PhotonTargets.All, PhotonNetwork.playerList.Length);
     }
 
     [PunRPC]
-    public void ChangeNumberClients(string PlayerAmount)
+    public void ChangeNumberClients(int PlayerAmount)
     {
-        textField.text = PlayerAmount;
-		if (PhotonNetwork.player.ID == 1 && PhotonNetwork.playerList.Length > 2)
-		{
-			StartButton.interactable = true;
+ 
+		for (var i = 0; i < 3; i++) {
+			playerImages[i].SetActive(i < PlayerAmount);
 		}
+
+		StartButton.interactable = PhotonNetwork.player.ID == 1 && PhotonNetwork.playerList.Length > 2;
     }
 
     public void OnJoinedRoom()
