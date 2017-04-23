@@ -43,6 +43,9 @@ public class GameState : Photon.MonoBehaviour
 		if(PhotonNetwork.isMasterClient)
 			FindObjectOfType<FireCanon>().StartAutoSpawn();
 		GameObject.FindGameObjectWithTag("LobbyGuiew").SetActive(false);
+		foreach (var audi in FindObjectsOfType<AudioSource>()) {
+			audi.Play();
+		}
 	}
 
 
