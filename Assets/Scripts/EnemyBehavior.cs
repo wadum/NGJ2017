@@ -42,8 +42,8 @@ public class EnemyBehavior : MonoBehaviour {
 		StopAllCoroutines();
 	}
 
-	private const Vector3 lowerBound = new Vector3(-525+40,-350+40);
-	private const Vector3 upperBound = new Vector3(525+40,350+40);
+	private static Vector3 lowerBound = new Vector3(-525+40,-350+40);
+	private static Vector3 upperBound = new Vector3(525+40,350+40);
 	public IEnumerator FadeInOut() {
 		while(true){
 			
