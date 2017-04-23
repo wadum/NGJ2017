@@ -23,6 +23,7 @@ public class FireCanon : Photon.MonoBehaviour {
 		newEnemy.GetComponent<RectTransform>().SetSiblingIndex(0);
 		newEnemy.transform.localPosition = new Vector3(Random.Range(-525+40, 525-40),Random.Range(-350+40, 350-40),0);
 		newEnemy.transform.localScale = new Vector3(1,1,1);
+		newEnemy.SetActive(true);
 		enemies.Add(newEnemy);
 	}
 

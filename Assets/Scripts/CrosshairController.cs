@@ -12,7 +12,7 @@ public class CrosshairController : Photon.MonoBehaviour {
 		}
 		set {
 			rect.localPosition = new Vector3(
-				Mathf.Clamp(value, -900, 900), 
+				Mathf.Clamp(value, -525+40, 525-40), 
 				rect.localPosition.y, 
 				rect.localPosition.z);
 		}
@@ -25,7 +25,7 @@ public class CrosshairController : Photon.MonoBehaviour {
 		set {
 			rect.localPosition = new Vector3(
 				rect.localPosition.x, 
-				Mathf.Clamp(value, -450, 450), 
+				Mathf.Clamp(value, -350+40, 350-40), 
 				rect.localPosition.z);
 		}
 	}
