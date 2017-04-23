@@ -2,12 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FireCanon : Photon.MonoBehaviour {
 
 	public GameObject crosshair;
 	public GameObject enemyPrefab;
 	public RectTransform radarArea;
+
+	public Text scoreText;
+
+	private int internalScore;
+	private int score {
+		get { return internalScore; }
+		set {
+			internalScore = value;
+			scoreText.text = string.Format("Score: {0}", internalScore);
+			}
+	}
+
+	public Text hpText;
+
+	public int startHp;
+
+	private int internalHp;
+	public int hp {
+		get { return internalHp; }
+		set {
+			internalHp = value;
+			hpText.text = string.Format("HP: {0}", internalHp);
+		}
+	}
 
 	public List<GameObject> enemies;
 
@@ -20,6 +45,8 @@ public class FireCanon : Photon.MonoBehaviour {
     private bool _autospawning;
 
 	public void Start() {
+		hp = startHp;
+		score = 0;
 		enemies = new List<GameObject>();
 		killedEnemies = new List<GameObject>();
 	}
@@ -80,8 +107,10 @@ public class FireCanon : Photon.MonoBehaviour {
 		killedEnemies.Clear();
 
 		enemies.ForEach(enemy => {
-			if (Vector2.Distance(enemy.GetComponent<RectTransform>().localPosition, crosshair.GetComponent<RectTransform>().localPosition) < 100)
+			if (Vector2.Distance(enemy.GetComponent<RectTransform>().localPosition, crosshair.GetComponent<RectTransform>().localPosition) < 100) {
 				killedEnemies.Add(enemy);
+				score++;
+			}
 		});
 
 		if(killedEnemies.Count > 0)
