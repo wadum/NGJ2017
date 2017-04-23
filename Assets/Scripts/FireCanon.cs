@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FireCanon : Photon.MonoBehaviour {
@@ -9,14 +10,51 @@ public class FireCanon : Photon.MonoBehaviour {
 	public RectTransform radarArea;
 
 	public List<GameObject> enemies;
+
+    [Header("Auto spawning")]
+    public float TimeToBegin = 3f;
+    public float TimeBetweenSpawns = 15f;
+    public int MinEnemies = 3;
+
 	private List<GameObject> killedEnemies;
+    private bool _autospawning;
 
 	public void Start() {
 		enemies = new List<GameObject>();
 		killedEnemies = new List<GameObject>();
 	}
 
-	public void SpawnEnemy() {
+    public void StartAutoSpawn() {
+        if (_autospawning)
+            return;
+
+        _autospawning = true;
+        StartCoroutine(AutoSpawnBegin());
+    }
+
+    private IEnumerator AutoSpawnBegin() {
+        if (TimeToBegin > 0)
+            yield return new WaitForSeconds(TimeToBegin);
+
+        SpawnEnemy();
+        var time = Time.timeSinceLevelLoad;
+
+        yield return null;
+
+        while(true)
+        {
+            if (TimeBetweenSpawns < Time.timeSinceLevelLoad - time
+                || enemies.Count < MinEnemies)
+            {
+                SpawnEnemy();
+                time = Time.timeSinceLevelLoad;
+            }
+
+            yield return null;
+        }
+    }
+
+    public void SpawnEnemy() {
 		Debug.Log("Spawning enemy");
 		GameObject newEnemy = Instantiate(enemyPrefab);
 		newEnemy.GetComponent<RectTransform>().SetParent(radarArea);
