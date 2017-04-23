@@ -6,6 +6,7 @@ public class FireCanon : Photon.MonoBehaviour {
 
 	public GameObject crosshair;
 	public GameObject enemyPrefab;
+	public RectTransform radarArea;
 
 	public List<GameObject> enemies;
 	private List<GameObject> killedEnemies;
@@ -18,10 +19,9 @@ public class FireCanon : Photon.MonoBehaviour {
 	public void SpawnEnemy() {
 		Debug.Log("Spawning enemy");
 		GameObject newEnemy = Instantiate(enemyPrefab);
-		newEnemy.GetComponent<RectTransform>()
-			.SetParent(this.transform.parent.gameObject.GetComponent<RectTransform>());
-		newEnemy.GetComponent<RectTransform>().SetSiblingIndex(1);
-		newEnemy.transform.localPosition = new Vector3(Random.Range(-900, 900),Random.Range(-450, 450),0);
+		newEnemy.GetComponent<RectTransform>().SetParent(radarArea);
+		newEnemy.GetComponent<RectTransform>().SetSiblingIndex(0);
+		newEnemy.transform.localPosition = new Vector3(Random.Range(-525+40, 525-40),Random.Range(-350+40, 350-40),0);
 		newEnemy.transform.localScale = new Vector3(1,1,1);
 		enemies.Add(newEnemy);
 	}
