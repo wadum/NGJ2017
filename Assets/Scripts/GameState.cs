@@ -33,7 +33,7 @@ public class GameState : Photon.MonoBehaviour {
             Debug.Log("Update() was called by Unity. Scene is loaded. Let's connect to the Photon Master Server. Calling: PhotonNetwork.ConnectUsingSettings();");
 
             ConnectInUpdate = false;
-            PhotonNetwork.ConnectUsingSettings(Version + "." + SceneManagerHelper.ActiveSceneBuildIndex);
+			PhotonNetwork.ConnectUsingSettings(Version + "." + SceneManagerHelper.ActiveSceneBuildIndex + "." + SuperUniqueServerKey);
         }
     }
 
@@ -55,17 +55,13 @@ public class GameState : Photon.MonoBehaviour {
     public virtual void OnConnectedToMaster()
     {
         Debug.Log("OnConnectedToMaster() was called by PUN. Now this client is connected and could join a room. Calling: PhotonNetwork.JoinRandomRoom();");
-        PhotonNetwork.JoinRoom(SuperUniqueServerKey);
+        PhotonNetwork.JoinRandomRoom();
     }
 
     public virtual void OnJoinedLobby()
     {
         Debug.Log("OnJoinedLobby(). This client is connected and does get a room-list, which gets stored as PhotonNetwork.GetRoomList(). This script now calls: PhotonNetwork.JoinRandomRoom();");
-        PhotonNetwork.JoinRoom(SuperUniqueServerKey);
-    }
-
-    public virtual void OnPhotonJoinRoomFailed() {
-        PhotonNetwork.CreateRoom(SuperUniqueServerKey);
+        PhotonNetwork.JoinRandomRoom();
     }
 
     public virtual void OnPhotonRandomJoinFailed()
